@@ -1,14 +1,7 @@
 <template>
   <div class="card-wrapper">
     <v-card class="w-100 elevation-3">
-      <v-avatar class="mb-4 avatar" size="60px">
-        <v-img
-          height="100px"
-          width="100px"
-          src="path_to_logo.jpg"
-          alt="logo"
-        ></v-img>
-      </v-avatar>
+      <v-avatar class="mb-4 avatar" size="60px"> </v-avatar>
 
       <v-chip class="mb-4">User Handle</v-chip>
 
