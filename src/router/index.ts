@@ -13,17 +13,6 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
-    path: "/login2",
-    component: () => import("@/layouts/default/Auth.vue"),
-    children: [
-      {
-        path: "",
-        name: "Home",
-        component: () => import("@/views/Login.vue"),
-      },
-    ],
-  },
-  {
     path: "/login",
     name: "Login",
     component: () => import("@/views/Login.vue"),
