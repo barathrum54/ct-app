@@ -1,13 +1,14 @@
 <template>
   <div class="card-wrapper">
-    <v-card class="pa-5">
-      <v-img
-        class="mb-4"
-        height="100px"
-        width="100px"
-        src="path_to_logo.jpg"
-        alt="logo"
-      ></v-img>
+    <v-card class="w-100 elevation-3">
+      <v-avatar class="mb-4 avatar" size="60px">
+        <v-img
+          height="100px"
+          width="100px"
+          src="path_to_logo.jpg"
+          alt="logo"
+        ></v-img>
+      </v-avatar>
 
       <v-chip class="mb-4">User Handle</v-chip>
 
@@ -17,12 +18,12 @@
 
       <v-row>
         <v-col cols="4" v-for="info in userInfo" :key="info.title">
-          <h6>{{ info.title }}</h6>
+          <h4 class="text-center text-light">{{ info.title }}</h4>
           <h2>{{ info.value }}</h2>
         </v-col>
       </v-row>
 
-      <v-btn color="primary">Hesabı Görüntüle</v-btn>
+      <v-btn class="w-100 mt-3" color="primary">Hesabı Görüntüle</v-btn>
     </v-card>
   </div>
 </template>
@@ -38,16 +39,26 @@ const userInfo = ref([
 </script>
 
 <style lang="scss" scoped>
+@import "../../styles/variables.scss";
 .card-wrapper {
-  background-color: white;
+  background-color: transparent;
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-.v-card {
-  max-width: 600px; // Adjust the width as needed
+  .v-card {
+    padding: 22px 20px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    .avatar {
+      padding: 3px;
+      border: 2pt solid $primary;
+    }
+  }
 }
 </style>
