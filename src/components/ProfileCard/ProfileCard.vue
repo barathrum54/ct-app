@@ -1,6 +1,6 @@
 <template>
   <div class="card-wrapper">
-    <v-card class="w-100 elevation-3 px-12">
+    <v-card class="w-100 elevation-2 px-12">
       <v-avatar class="mb-4 avatar" size="60px"> </v-avatar>
       <div class="">
         <h5>User Handle</h5>
@@ -53,6 +53,7 @@ const userInfo = ref([
   align-items: center;
 
   .v-card {
+    background-color: white;
     padding: 22px 20px;
     display: flex;
     flex-flow: column;

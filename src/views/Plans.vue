@@ -95,17 +95,31 @@
 
 <style scoped lang="scss">
 @import "../styles/variables.scss";
+
 .card-wrapper {
   display: flex;
   justify-content: space-between;
+  & .v-col:nth-of-type(1) {
+    .plan-card {
+      margin-left: 0;
+      margin-right: 45px;
+    }
+  }
+  & .v-col:nth-of-type(3) {
+    .plan-card {
+      margin-right: 0;
+      margin-left: 45px;
+    }
+  }
 
   .plan-card {
     background-color: white;
     border-radius: 10px;
     padding-block: 50px;
-    margin-inline: 30px;
     position: relative;
+    margin-inline: 30px;
     overflow: visible;
+
     &.favorite {
       border: 2pt solid rgba($primary, $alpha: 0.3);
       box-shadow: 1px 0px 25px 0px rgba($primary, $alpha: 0.4);
