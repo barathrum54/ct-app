@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import NProgress from "nprogress";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -9,6 +10,16 @@ const routes: Array<RouteRecordRaw> = [
         path: "",
         name: "Home",
         component: () => import("@/views/Home.vue"),
+      },
+      {
+        path: "/plans",
+        name: "Plans",
+        component: () => import("@/views/Plans.vue"),
+      },
+      {
+        path: "/help",
+        name: "Help",
+        component: () => import("@/views/Help.vue"),
       },
     ],
   },
@@ -22,6 +33,14 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+router.beforeEach((to, from, next) => {
+  NProgress.start();
+  next();
+});
+
+router.afterEach(() => {
+  NProgress.done();
 });
 
 export default router;
