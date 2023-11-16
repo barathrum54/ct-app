@@ -11,13 +11,18 @@
           class="search-input"
         />
       </div>
-      <profile-card-section />
+      <div class="cards-section">
+        <profile-card-section />
+      </div>
     </v-col>
-    <v-col cols="2">Son aratılanlar</v-col>
+    <v-col class="elevation-3 history-panel-wrapper" cols="2">
+      <history-panel />
+    </v-col>
   </v-row>
 </template>
 
 <script lang="ts" setup>
+import HistoryPanel from "@/components/History/HistoryPanel.vue";
 import ProfileCardSection from "@/components/ProfileCard/ProfileCardSection.vue";
 </script>
 
@@ -63,5 +68,10 @@ import ProfileCardSection from "@/components/ProfileCard/ProfileCardSection.vue"
       }
     }
   }
+}
+.history-panel-wrapper {
+  position: fixed;
+  right: 0;
+  height: 100%;
 }
 </style>
