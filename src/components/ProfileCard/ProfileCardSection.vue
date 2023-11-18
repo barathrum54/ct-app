@@ -1,19 +1,57 @@
 <template>
   <div class="profile-card-section-wrapper">
-    <div class="profile-card-wrapper" v-for="index in 6" :key="index">
+    <div class="profile-card-wrapper" v-if="loading">
+      <v-skeleton-loader
+        style="
+          width: 100%;
+          border: 1pt solid rgba(0, 0, 0, 0.1);
+          padding: 5px 15px;
+        "
+        type="card, article"
+      ></v-skeleton-loader>
+    </div>
+    <div
+      v-else
+      class="profile-card-wrapper"
+      v-for="item in profileData"
+      :key="item.id"
+    >
       <ProfileCard />
+    </div>
+    <div v-if="!loading" class="profile-card-wrapper">
+      <ProfileCardCta />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import ProfileCard from "./ProfileCard.vue";
+import ProfileCardCta from "./ProfileCardCta.vue";
+import { useProfilesStore } from "@/store/profiles"; // Adjust the import path as needed
+import { storeToRefs } from "pinia";
+
+interface ProfileSectionProps {
+  searchQuery: string;
+}
+const props = defineProps<ProfileSectionProps>();
+const profilesStore = useProfilesStore();
+const { loading } = storeToRefs(profilesStore);
+const profileData = computed(() => {
+  // Check if there is a search query
+  if (props.searchQuery !== "") {
+    // Return search results when there's a query
+    return profilesStore.searchProfiles;
+  } else {
+    // Return default profiles when there's no query
+    return profilesStore.defaultProfiles;
+  }
+});
 </script>
 
 <style lang="scss" scoped>
 .profile-card-section-wrapper {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   align-items: flex-start;
   width: 100%;
@@ -23,7 +61,7 @@ import ProfileCard from "./ProfileCard.vue";
   padding-block: 25px;
   padding-inline: 5px;
   .profile-card-wrapper {
-    width: calc(33.3% - (75px)); // Adjust the width to account for the gap
+    width: calc(33.3% - (33px)); // Adjust the width to account for the gap
     box-sizing: border-box;
   }
   &::-webkit-scrollbar {

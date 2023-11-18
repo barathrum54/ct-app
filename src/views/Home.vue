@@ -8,16 +8,38 @@
         placeholder="Kullanıcı adını buraya gir"
         type="text"
         class="search-input"
+        v-model="profileSearchQuery"
       />
     </div>
     <div class="cards-section">
-      <profile-card-section />
+      <profile-card-section :search-query="debouncedSearchQuery" />
     </div>
   </v-container>
 </template>
 
 <script lang="ts" setup>
 import ProfileCardSection from "@/components/ProfileCard/ProfileCardSection.vue";
+import { ref, watch } from "vue";
+import _ from "lodash"; // If you're using lodash for debouncing
+import { useProfilesStore } from "@/store/profiles"; // Adjust the import path as needed
+
+const profileSearchQuery = ref("");
+const debouncedSearchQuery = ref("");
+
+const profilesStore = useProfilesStore();
+
+const debounce = _.debounce((query: string) => {
+  debouncedSearchQuery.value = query;
+}, 500);
+
+watch(profileSearchQuery, () => {
+  debounce(profileSearchQuery.value);
+});
+
+watch(debouncedSearchQuery, (newQuery) => {
+  console.log("Searching for:", newQuery);
+  profilesStore.searchProfile(newQuery);
+});
 </script>
 
 <style lang="scss" scoped>
