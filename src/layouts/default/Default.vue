@@ -1,11 +1,20 @@
 <template>
   <v-app>
-    <default-bar />
-    <v-row class="h-100 pa-0 ma-0" justify="space-between" gx-4>
-      <v-col cols="10" class="content-wrapper bg-surface d-flex flex-column">
+    <default-bar @toggle-history="toggleHistory" />
+    <v-row class="h-100 pa-0 ma-0">
+      <v-col
+        lg="12"
+        :md="isHistoryBarVisible ? 12 : 10"
+        class="content-wrapper bg-surface d-flex flex-column"
+      >
         <default-view />
       </v-col>
-      <v-col class="elevation-3 history-panel-wrapper" cols="2">
+      <v-col
+        :class="{ 'history-panel-wrapper': true, hidden: isHistoryBarVisible }"
+        lg="2"
+        md="4"
+        sm="4"
+      >
         <history-panel />
       </v-col>
     </v-row>
@@ -16,6 +25,18 @@
 import HistoryPanel from "@/components/History/HistoryPanel.vue";
 import DefaultBar from "./AppBar.vue";
 import DefaultView from "./View.vue";
+import { ref } from "vue";
+import { useDisplay } from "vuetify/lib/framework.mjs";
+import { watchEffect } from "vue";
+
+const isHistoryBarVisible = ref(false); // Reactive property to toggle sidebar
+const toggleHistory = () => {
+  isHistoryBarVisible.value = !isHistoryBarVisible.value;
+};
+const display = useDisplay();
+watchEffect(() => {
+  if (!display.mdAndUp) isHistoryBarVisible.value = true;
+});
 </script>
 <style lang="scss" scoped>
 .content-wrapper {
@@ -25,9 +46,19 @@ import DefaultView from "./View.vue";
 }
 .history-panel-wrapper {
   position: fixed;
-  z-index: 3;
   top: 65px;
-  right: 0;
   height: 100%;
+  transition: right 0.3s ease; // Smooth transition for the sliding effect
+  z-index: 3;
+  right: 0; // Slide in
+
+  &.hidden {
+    right: -100%;
+  }
+  @media screen and (max-width: 960px) {
+    position: fixed;
+    background-color: white;
+    border-left: 1pt solid rgba($color: #000000, $alpha: 0.1);
+  }
 }
 </style>

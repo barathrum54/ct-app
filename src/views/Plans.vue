@@ -1,11 +1,11 @@
 <template>
-  <v-container class="px-16">
+  <v-container>
     <div class="bg-surface pt-16 h-100">
       <h1 class="text-center font-weight-regular">
         İhtiyacınıza Göre Av Paketlerinden Birini Seçin
       </h1>
       <v-row class="justify-space-between mt-10 card-wrapper">
-        <v-col cols="4">
+        <v-col cols="12" md="4" class="v-col">
           <v-card class="plan-card text-center">
             <v-card-title primary-title>
               <div>
@@ -32,7 +32,7 @@
             </v-card-actions>
           </v-card>
         </v-col>
-        <v-col cols="4">
+        <v-col cols="12" md="4" class="v-col">
           <v-card class="plan-card favorite text-center">
             <v-card-title primary-title>
               <div>
@@ -59,7 +59,7 @@
             </v-card-actions>
           </v-card>
         </v-col>
-        <v-col cols="4">
+        <v-col cols="12" md="4" class="v-col">
           <v-card class="plan-card text-center">
             <v-card-title primary-title>
               <div>
@@ -96,22 +96,35 @@
 <style scoped lang="scss">
 @import "../styles/variables.scss";
 
+@media screen and (min-width: 900px) {
+  .v-container {
+    padding-inline: 120px;
+  }
+}
+
 .card-wrapper {
   display: flex;
   justify-content: space-between;
   & .v-col:nth-of-type(1) {
     .plan-card {
       margin-left: 0;
-      margin-right: 45px;
+      margin-right: 70px;
     }
   }
   & .v-col:nth-of-type(3) {
     .plan-card {
       margin-right: 0;
-      margin-left: 45px;
+      margin-left: 70px;
     }
   }
-
+  @media screen and (max-width: 900px) {
+    & .v-col {
+      .plan-card {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+    }
+  }
   .plan-card {
     background-color: white;
     border-radius: 10px;

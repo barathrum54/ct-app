@@ -62,6 +62,9 @@ const profileData = computed(() => {
   padding-inline: 5px;
   .profile-card-wrapper {
     width: calc(33.3% - (33px)); // Adjust the width to account for the gap
+    @media screen and (max-width: 640px) {
+      width: calc(100%);
+    }
     box-sizing: border-box;
   }
   &::-webkit-scrollbar {

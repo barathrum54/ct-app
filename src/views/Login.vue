@@ -10,71 +10,73 @@
         class="mt-16"
         height="100%"
         width="100%"
-        max-width="200px"
-        max-height="200px"
+        max-width="10rem"
+        max-height="10rem"
         src="@/assets/image/instagram.svg"
       />
       <div class="d-flex flex-column align-center ga-10 w-100">
         <h1 class="font-weight-black">Giriş Yap</h1>
-        <v-form class="d-flex flex-column w-50">
-          <v-text-field
-            rounded="lg"
-            variant="solo"
-            autocomplete="null"
-            label="Email adresinizi girin..."
-            type="email"
-            v-model="registerForm.email"
-          >
-            <template v-slot:prepend-inner>
-              <i
-                aria-hidden="true"
-                class="v-icon notranslate mdi mdi-email text-primary-accent text-lg-h4 mr-3"
-              ></i> </template
-          ></v-text-field>
-          <v-text-field
-            rounded="lg"
-            variant="solo"
-            autocomplete="null"
-            label="Şifrenizi girin..."
-            :type="showPassword ? 'text' : 'password'"
-            v-model="registerForm.password"
-          >
-            <template v-slot:prepend-inner>
-              <i
-                aria-hidden="true"
-                class="v-icon notranslate mdi mdi-key text-primary-accent text-lg-h4 mr-3"
-              ></i>
-            </template>
-            <template v-slot:append-inner>
-              <v-icon
-                :class="showPassword ? 'text-primary' : 'text-primary-accent'"
-                @click="showPassword = !showPassword"
-              >
-                {{ showPassword ? "mdi-eye" : "mdi-eye-off" }}
-              </v-icon>
-            </template></v-text-field
-          >
-          <v-checkbox color="primary" label="Checkbox">
-            <template v-slot:label>
-              <h5>
-                <a href="" class="text-decoration-none text-primary"
-                  >Kullanım Sözleşmesi</a
+        <v-container class="px-lg-16">
+          <v-form class="d-flex flex-column w-100">
+            <v-text-field
+              rounded="lg"
+              variant="solo"
+              autocomplete="null"
+              label="Email adresinizi girin..."
+              type="email"
+              v-model="registerForm.email"
+            >
+              <template v-slot:prepend-inner>
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-email text-primary-accent text-lg-h4 mr-3"
+                ></i> </template
+            ></v-text-field>
+            <v-text-field
+              rounded="lg"
+              variant="solo"
+              autocomplete="null"
+              label="Şifrenizi girin..."
+              :type="showPassword ? 'text' : 'password'"
+              v-model="registerForm.password"
+            >
+              <template v-slot:prepend-inner>
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-key text-primary-accent text-lg-h4 mr-3"
+                ></i>
+              </template>
+              <template v-slot:append-inner>
+                <v-icon
+                  :class="showPassword ? 'text-primary' : 'text-primary-accent'"
+                  @click="showPassword = !showPassword"
                 >
-                ve
-                <a href="" class="text-decoration-none text-primary"
-                  >Gizlilik Politikasını</a
-                >
-                okudum, kabul ediyorum.
-              </h5>
-            </template>
-          </v-checkbox>
-          <v-btn
-            class="py-8 d-flex text-capitalize text-lg rounded-lg"
-            color="primary"
-            @click="register"
-            >Giriş Yap</v-btn
-          >
-        </v-form>
+                  {{ showPassword ? "mdi-eye" : "mdi-eye-off" }}
+                </v-icon>
+              </template></v-text-field
+            >
+            <v-checkbox color="primary" label="Checkbox">
+              <template v-slot:label>
+                <h5>
+                  <a href="" class="text-decoration-none text-primary"
+                    >Kullanım Sözleşmesi</a
+                  >
+                  ve
+                  <a href="" class="text-decoration-none text-primary"
+                    >Gizlilik Politikasını</a
+                  >
+                  okudum, kabul ediyorum.
+                </h5>
+              </template>
+            </v-checkbox>
+            <v-btn
+              class="py-8 d-flex text-capitalize text-lg rounded-lg"
+              color="primary"
+              @click="register"
+              >Giriş Yap</v-btn
+            >
+          </v-form>
+        </v-container>
       </div>
       <div class="d-flex flex-column justify-center align-center">
         <h4 class="text-primary-accent">Yardıma mı ihtiyacın var?</h4>
@@ -97,8 +99,8 @@
       <v-img
         height="100%"
         width="100%"
-        max-width="300px"
-        max-height="300px"
+        max-width="16rem"
+        max-height="16rem"
         src="@/assets/image/lock.svg"
       />
       <h1 class="font-weight-black">Güvenliğiniz Bizim İçin Önemli</h1>
@@ -144,7 +146,11 @@ const register = () => {
 
 <style scoped lang="scss">
 @use "@/styles/settings";
-
+@media screen and (min-width: 1280px) {
+  .px-lg-16 {
+    padding-inline: 150px !important;
+  }
+}
 .info-banner {
   text-align: center;
   position: relative;

@@ -1,5 +1,5 @@
 <template>
-  <v-container class="px-16">
+  <v-container class="px-lg-16">
     <h1 class="text-center w-100 font-weight-regular">
       Gizli Profilleri Aşağıdan Aratabilirsin
     </h1>
