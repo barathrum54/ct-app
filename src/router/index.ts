@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import NProgress from "nprogress";
+import NProgress, { settings } from "nprogress";
+import { useOverlayStore } from "@/store/overlay";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -21,12 +22,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "Help",
         component: () => import("@/views/Help.vue"),
       },
+      {
+        path: "/login",
+        name: "Login",
+        component: () => import("@/views/Login.vue"),
+      },
     ],
-  },
-  {
-    path: "/login",
-    name: "Login",
-    component: () => import("@/views/Login.vue"),
   },
 ];
 
@@ -36,10 +37,16 @@ const router = createRouter({
 });
 router.beforeEach((to, from, next) => {
   NProgress.start();
+  const overlayStore = useOverlayStore();
+
+  overlayStore.showOverlay();
   next();
 });
 
 router.afterEach(() => {
+  const overlayStore = useOverlayStore();
+
+  overlayStore.hideOverlay();
   NProgress.done();
 });
 

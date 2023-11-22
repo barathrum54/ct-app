@@ -70,6 +70,7 @@
               </template>
             </v-checkbox>
             <v-btn
+              :loading="isLoading"
               class="py-8 d-flex text-capitalize text-lg rounded-lg"
               color="primary"
               @click="register"
@@ -126,9 +127,16 @@
 </template>
 
 <script setup lang="ts">
+import { useSnackbarStore } from "@/store/snackbar";
+import { useUserStore } from "@/store/user";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 const showPassword = ref(false);
+const userStore = useUserStore();
+const snackbarStore = useSnackbarStore();
 
+const isLoading = ref(false);
+const router = useRouter();
 interface RegisterForm {
   email: string;
   password: string;
@@ -139,8 +147,20 @@ const registerForm = ref<RegisterForm>({
   password: "",
 });
 
-const register = () => {
-  // Handle registration logic
+const register = async () => {
+  isLoading.value = true;
+  try {
+    const res = await userStore.loginUser(
+      registerForm.value.email,
+      registerForm.value.password
+    );
+    snackbarStore.showMessage(res.message);
+    router.push("/");
+  } catch (error: any) {
+    console.log(error);
+    snackbarStore.showError(error);
+  }
+  isLoading.value = false;
 };
 </script>
 

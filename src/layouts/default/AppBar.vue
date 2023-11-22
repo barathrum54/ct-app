@@ -42,6 +42,7 @@
     <v-btn
       class="d-none d-md-block text-capitalize text-primary font-weight-regular"
       variant="text"
+      @click="logout"
       >Çıkış Yap</v-btn
     >
   </v-app-bar>
@@ -51,20 +52,28 @@
       <v-list-item link to="/">Ana sayfa</v-list-item>
       <v-list-item link to="/plans">Paketler</v-list-item>
       <v-list-item link to="/help">Yardım</v-list-item>
-      <v-list-item link to="/logout">Çıkış Yap</v-list-item>
+      <v-list-item btn @click="logout">Çıkış Yap</v-list-item>
       <!-- Add other navigation items here -->
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script lang="ts" setup>
+import { useUserStore } from "@/store/user";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
+const userStore = useUserStore();
 const emit = defineEmits(["toggleHistory"]);
 const sidebarOpen = ref(false);
 
 const toggleSidebar = () => {
   sidebarOpen.value = !sidebarOpen.value;
+};
+const logout = async () => {
+  await userStore.logoutUser();
+  router.push("/logout");
 };
 </script>
 

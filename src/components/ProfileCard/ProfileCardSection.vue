@@ -71,4 +71,5 @@ const profileData = computed(() => {
     display: none;
   }
 }
+
 </style>

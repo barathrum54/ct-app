@@ -12,7 +12,7 @@ import { createApp } from "vue";
 import "nprogress/nprogress.css"; // This is the NProgress CSS
 
 // Plugins
-import { registerPlugins } from "@/plugins";
+import { registerPlugins } from "./plugins";
 
 const app = createApp(App);
 
