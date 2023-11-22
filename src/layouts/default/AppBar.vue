@@ -73,7 +73,7 @@ const toggleSidebar = () => {
 };
 const logout = async () => {
   await userStore.logoutUser();
-  router.push("/logout");
+  router.push("/login");
 };
 </script>
 
