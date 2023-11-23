@@ -55,7 +55,12 @@
                 </v-icon>
               </template></v-text-field
             >
-            <v-checkbox color="primary" label="Checkbox">
+            <v-checkbox
+              v-model="consentChecked"
+              color="primary"
+              label="Checkbox"
+              :error="consentCheckedError"
+            >
               <template v-slot:label>
                 <h5>
                   <a href="" class="text-decoration-none text-primary"
@@ -137,6 +142,10 @@ const snackbarStore = useSnackbarStore();
 
 const isLoading = ref(false);
 const router = useRouter();
+
+const consentChecked = ref(false);
+const consentCheckedError = ref(false);
+
 interface RegisterForm {
   email: string;
   password: string;
@@ -148,6 +157,14 @@ const registerForm = ref<RegisterForm>({
 });
 
 const register = async () => {
+  consentCheckedError.value = false;
+  if (!consentChecked.value) {
+    snackbarStore.showError(
+      "Lütfen kullanım sözleşmesini ve gizlilik politikasını okuyup kabul edin."
+    );
+    consentCheckedError.value = true;
+    return;
+  }
   isLoading.value = true;
   try {
     const res = await userStore.loginUser(
