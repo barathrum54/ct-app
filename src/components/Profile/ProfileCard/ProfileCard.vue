@@ -1,7 +1,7 @@
 <template>
   <div class="card-wrapper">
     <v-card class="w-100 elevation-2 px-12">
-      <v-avatar class="mb-4 avatar" size="60px"> </v-avatar>
+      <v-avatar class="mb-4 mt-10 avatar" size="60px"> </v-avatar>
       <div class="">
         <h5>User Handle</h5>
       </div>
@@ -21,7 +21,7 @@
         </v-col>
       </v-row>
 
-      <v-btn class="w-100 mt-3" color="primary">
+      <v-btn class="w-100 mt-3" @click="handleShowProfileButtonClick(userHandle)" color="primary">
         <h5 class="text-capitalize">Hesabı Görüntüle</h5>
       </v-btn>
     </v-card>
@@ -30,16 +30,29 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const props = defineProps({
+  userHandle: {
+    type: String,
+    default: "test"
+  },
+});
+const router = useRouter();
 
 const userInfo = ref([
   { title: "Takipçiler", value: "661 M" },
   { title: "Gönderiler", value: "7525" },
   { title: "Takip Edilenler", value: "81" },
 ]);
+
+const handleShowProfileButtonClick = (userHandle: string) => {
+  router.push({ name: "ProfileDetail", params: { userHandle } });
+};
 </script>
 
 <style lang="scss" scoped>
-@import "../../styles/variables.scss";
+@import "@/styles/variables.scss";
 
 .card-wrapper {
   background-color: transparent;
@@ -48,6 +61,8 @@ const userInfo = ref([
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 400px !important;
+  padding: 0;
 
   .v-card {
     background-color: white;
@@ -57,6 +72,7 @@ const userInfo = ref([
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    height: 420px;
 
     .info-title {
       opacity: 0.5;

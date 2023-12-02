@@ -1,20 +1,27 @@
 <template>
   <v-container class="px-lg-16">
-    <h1 class="text-center w-100 font-weight-regular my-13">
-      Gizli Profilleri Aşağıdan Aratabilirsin
-    </h1>
+
     <div class="search-wrapper elevation-2 w-100 mb-5">
-      <profile-search-bar />
+      <profile-search-bar :user-handle="userHandle" />
     </div>
     <div class="cards-section">
-      <profile-card-section />
+      <profile-detail-section />
     </div>
   </v-container>
 </template>
 
 <script lang="ts" setup>
-import ProfileCardSection from "@/components/Profile/ProfileCard/ProfileCardSection.vue";
+import ProfileDetailSection from "@/components/Profile/ProfileDetail/ProfileDetailSection.vue";
 import ProfileSearchBar from "@/components/common/ProfileSearchBar.vue";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
+
+
+const route = useRoute();
+const userHandle = computed(() => {
+  if (!route.params.userHandle) return "";
+  return route.params.userHandle as string;
+});
 
 </script>
 
@@ -28,20 +35,5 @@ import ProfileSearchBar from "@/components/common/ProfileSearchBar.vue";
   position: relative;
   height: fit-content;
   padding-block: 10px;
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 10px;
-    margin: auto;
-    width: 15rem;
-    height: 1px;
-    background-color: black;
-    opacity: 0.3;
-  }
-
-
 }
 </style>

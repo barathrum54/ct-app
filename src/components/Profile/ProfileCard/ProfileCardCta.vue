@@ -18,7 +18,7 @@
 <script setup lang="ts"></script>
 
 <style lang="scss" scoped>
-@import "../../styles/variables.scss";
+@import "@/styles/variables.scss";
 
 .card-wrapper {
   background-color: transparent;
@@ -35,7 +35,7 @@
 
   .v-card {
     padding: 22px 0px;
-    background: url("../../assets/image/profile-card-cta-bg.png");
+    background: url("@/assets/image/profile-card-cta-bg.png");
     background-size: cover;
     display: flex;
     flex-flow: column;

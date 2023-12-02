@@ -32,6 +32,11 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/Login.vue"),
       },
       {
+        path: "/profile/:userHandle",
+        name: "ProfileDetail",
+        component: () => import("@/views/ProfileDetail.vue"),
+      },
+      {
         path: "/:pathMatch(.*)*",
         name: "NotFound",
         component: () => import("@/views/NotFound.vue"),

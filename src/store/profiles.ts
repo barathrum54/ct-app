@@ -1,7 +1,7 @@
 // store/profiles.ts
 import { defineStore } from "pinia";
 
-interface Profile {
+export interface Profile {
   // Continue using the existing Profile structure
   id: number;
   name: string;
@@ -11,6 +11,7 @@ interface ProfilesState {
   loading: boolean;
   defaultProfiles: Profile[];
   searchProfiles: Profile[];
+  searchQuery?: string;
 }
 
 export const useProfilesStore = defineStore({
@@ -25,6 +26,7 @@ export const useProfilesStore = defineStore({
       id: index,
       name: `Search Profile ${index + 1}`, // Example search profile name
     })),
+    searchQuery: "",
   }),
   getters: {
     // Define any getters here if needed in the future
@@ -33,7 +35,7 @@ export const useProfilesStore = defineStore({
     // Action to handle profile search
     searchProfile(query: string) {
       this.loading = true;
-
+      this.searchQuery = query;
       // Simulating an async search operation
       setTimeout(() => {
         // Mock search results, in a real app, replace this with actual data
@@ -47,7 +49,6 @@ export const useProfilesStore = defineStore({
 
         // Update the searchProfiles with the results
         this.searchProfiles = searchResults;
-
         // Set loading to false after the search is complete
         this.loading = false;
       }, 2000);

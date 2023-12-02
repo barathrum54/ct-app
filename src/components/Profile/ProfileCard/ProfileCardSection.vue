@@ -18,20 +18,20 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import ProfileCard from "./ProfileCard.vue";
-import ProfileCardCta from "./ProfileCardCta.vue";
+import ProfileCard from "@/components/Profile/ProfileCard/ProfileCard.vue";
+import ProfileCardCta from "@/components/Profile/ProfileCard/ProfileCardCta.vue";
 import { useProfilesStore } from "@/store/profiles"; // Adjust the import path as needed
 import { storeToRefs } from "pinia";
 
-interface ProfileSectionProps {
-  searchQuery: string;
-}
-const props = defineProps<ProfileSectionProps>();
+
 const profilesStore = useProfilesStore();
 const { loading } = storeToRefs(profilesStore);
+const searchQuery = computed(() => {
+  return profilesStore.searchQuery;
+});
 const profileData = computed(() => {
   // Check if there is a search query
-  if (props.searchQuery !== "") {
+  if (searchQuery.value !== "") {
     // Return search results when there's a query
     return profilesStore.searchProfiles;
   } else {
@@ -51,7 +51,7 @@ const profileData = computed(() => {
   padding-block: 25px;
   overflow-y: scroll;
   grid: auto-flow / repeat(3, 1fr);
-  grid-gap: 20px 100px;
+  grid-gap: 50px 100px;
   padding-inline: 5px;
 
   .profile-card-wrapper {
