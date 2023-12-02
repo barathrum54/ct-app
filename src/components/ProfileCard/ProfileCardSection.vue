@@ -1,21 +1,13 @@
 <template>
   <div class="profile-card-section-wrapper">
     <div class="profile-card-wrapper" v-if="loading">
-      <v-skeleton-loader
-        style="
+      <v-skeleton-loader style="
           width: 100%;
           border: 1pt solid rgba(0, 0, 0, 0.1);
           padding: 5px 15px;
-        "
-        type="card, article"
-      ></v-skeleton-loader>
+        " type="card, article"></v-skeleton-loader>
     </div>
-    <div
-      v-else
-      class="profile-card-wrapper"
-      v-for="item in profileData"
-      :key="item.id"
-    >
+    <div v-else class="profile-card-wrapper" v-for="item in profileData" :key="item.id">
       <ProfileCard />
     </div>
     <div v-if="!loading" class="profile-card-wrapper">
@@ -54,22 +46,27 @@ const profileData = computed(() => {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
+  justify-content: space-between;
   width: 100%;
   gap: 50px;
   height: 100%;
   overflow-y: scroll;
   padding-block: 25px;
   padding-inline: 5px;
+
   .profile-card-wrapper {
-    width: calc(33.3% - (33px)); // Adjust the width to account for the gap
+
+    min-width: 30%;
+
     @media screen and (max-width: 640px) {
       width: calc(100%);
     }
+
     box-sizing: border-box;
   }
+
   &::-webkit-scrollbar {
     display: none;
   }
 }
-
 </style>
