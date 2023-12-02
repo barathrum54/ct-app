@@ -5,7 +5,7 @@
         İhtiyacınıza Göre Av Paketlerinden Birini Seçin
       </h1>
       <v-row class="justify-space-between mt-10 card-wrapper">
-        <v-col cols="12" md="4" class="v-col">
+        <!-- <v-col cols="12" md="4" class="v-col">
           <v-card class="plan-card text-center">
             <v-card-title primary-title>
               <div>
@@ -31,7 +31,7 @@
               >
             </v-card-actions>
           </v-card>
-        </v-col>
+        </v-col> -->
         <v-col cols="12" md="4" class="v-col">
           <v-card class="plan-card favorite text-center">
             <v-card-title primary-title>
@@ -50,12 +50,9 @@
               <h5>Kolayca İptal Et</h5>
             </div>
             <v-card-actions class="d-flex justify-center mt-10 w-100">
-              <v-btn
-                color="primary"
-                variant="elevated"
-                class="w-75 text-capitalize"
-                ><h5>Abone Ol</h5></v-btn
-              >
+              <v-btn color="primary" variant="elevated" class="w-75 text-capitalize">
+                <h5>Abone Ol</h5>
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -77,12 +74,9 @@
               <h5>Kolayca İptal Et</h5>
             </div>
             <v-card-actions class="d-flex justify-center mt-10 w-100">
-              <v-btn
-                color="primary"
-                variant="elevated"
-                class="w-75 text-capitalize"
-                ><h5>Abone Ol</h5></v-btn
-              >
+              <v-btn color="primary" variant="elevated" class="w-75 text-capitalize">
+                <h5>Abone Ol</h5>
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -104,19 +98,22 @@
 
 .card-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: center !important;
+
   & .v-col:nth-of-type(1) {
     .plan-card {
       margin-left: 0;
       margin-right: 70px;
     }
   }
+
   & .v-col:nth-of-type(3) {
     .plan-card {
       margin-right: 0;
       margin-left: 70px;
     }
   }
+
   @media screen and (max-width: 900px) {
     & .v-col {
       .plan-card {
@@ -125,6 +122,7 @@
       }
     }
   }
+
   .plan-card {
     background-color: white;
     border-radius: 10px;
@@ -138,6 +136,7 @@
       box-shadow: 1px 0px 25px 0px rgba($primary, $alpha: 0.4);
       -webkit-box-shadow: 1px 0px 25px 0px rgba($primary, $alpha: 0.4);
       -moz-box-shadow: 1px 0px 25px 0px rgba($primary, $alpha: 0.4);
+
       &::after {
         content: "En Çok Tercih Edilen";
 
@@ -161,10 +160,12 @@
         margin: auto;
       }
     }
+
     .price {
       font-size: 3rem;
       margin-top: 35px;
     }
+
     .info-section {
       display: flex;
       flex-flow: column;
