@@ -10,11 +10,7 @@
         <h3>User Name</h3>
       </div>
 
-      <v-chip
-        class="mb-4 w-50 d-flex justify-center"
-        color="light-accent"
-        variant="outlined"
-      >
+      <v-chip class="mb-4 w-50 d-flex justify-center" color="light-accent" variant="outlined">
         <h6 class="text-center">Açık Profil</h6>
       </v-chip>
 
@@ -44,6 +40,7 @@ const userInfo = ref([
 
 <style lang="scss" scoped>
 @import "../../styles/variables.scss";
+
 .card-wrapper {
   background-color: transparent;
   height: 100%;
@@ -60,9 +57,11 @@ const userInfo = ref([
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+
     .info-title {
       opacity: 0.5;
     }
+
     .avatar {
       padding: 3px;
       border: 2pt solid $primary;

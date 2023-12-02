@@ -10,7 +10,7 @@
     <div v-else class="profile-card-wrapper" v-for="item in profileData" :key="item.id">
       <ProfileCard />
     </div>
-    <div v-if="!loading" class="profile-card-wrapper">
+    <div v-if="!loading && searchQuery" class="profile-card-wrapper">
       <ProfileCardCta />
     </div>
   </div>
@@ -46,27 +46,23 @@ const profileData = computed(() => {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: space-between;
   width: 100%;
-  gap: 50px;
   height: 100%;
-  overflow-y: scroll;
   padding-block: 25px;
+  overflow-y: scroll;
+  grid: auto-flow / repeat(3, 1fr);
+  grid-gap: 20px 100px;
   padding-inline: 5px;
 
   .profile-card-wrapper {
-
-    min-width: 30%;
-
-    @media screen and (max-width: 640px) {
-      width: calc(100%);
-    }
-
-    box-sizing: border-box;
+    flex: 1 1 auto;
+    max-width: calc(33% - 100px / 3);
+    height: 100%;
   }
 
   &::-webkit-scrollbar {
     display: none;
+    width: 0px;
   }
 }
 </style>
