@@ -56,7 +56,7 @@ const profileData = computed(() => {
 
   .profile-card-wrapper {
     flex: 1 1 auto;
-    max-width: calc(33% - 100px / 3);
+    max-width: calc(33% - 100px / 2);
     height: 100%;
   }
 
