@@ -1,7 +1,6 @@
 // store/user.ts
 import { defineStore } from "pinia";
 import { authService } from "../services/auth";
-import Cookies from "js-cookie";
 
 interface UserState {
   isLoggedIn: boolean;
@@ -19,11 +18,13 @@ export const useUserStore = defineStore({
   actions: {
     async loginUser(email: string, password: string) {
       try {
-        const userData = await authService.login(email, password);
+        // const userData = await authService.login(email, password);
         this.isLoggedIn = true;
-        this.userData = { email: userData.email };
-        return userData;
+        this.userData = { email: email };
+        // this.userData = { email: userData.email };
+        return { email: email };
       } catch (error: any) {
+        if (error.message) throw error.message;
         throw `${error.response.data.message} ${
           error.response.data.data || ""
         }`;
