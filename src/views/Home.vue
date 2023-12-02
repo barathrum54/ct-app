@@ -1,15 +1,10 @@
 <template>
   <v-container class="px-lg-16">
-    <h1 class="text-center w-100 font-weight-regular">
+    <h1 class="text-center w-100 font-weight-regular my-13">
       Gizli Profilleri Aşağıdan Aratabilirsin
     </h1>
-    <div class="search-wrapper elevation-2 w-100">
-      <input
-        placeholder="Kullanıcı adını buraya gir"
-        type="text"
-        class="search-input"
-        v-model="profileSearchQuery"
-      />
+    <div class="search-wrapper elevation-2 w-100 mb-5">
+      <input placeholder="Kullanıcı adını buraya gir" type="text" class="search-input" v-model="profileSearchQuery" />
     </div>
     <div class="cards-section">
       <profile-card-section :search-query="debouncedSearchQuery" />
@@ -52,6 +47,7 @@ watch(debouncedSearchQuery, (newQuery) => {
   position: relative;
   height: fit-content;
   padding-block: 10px;
+
   &::before {
     content: "";
     position: absolute;
@@ -64,6 +60,7 @@ watch(debouncedSearchQuery, (newQuery) => {
     background-color: black;
     opacity: 0.3;
   }
+
   .search-input {
     width: 30%;
     height: 100%;
@@ -72,6 +69,7 @@ watch(debouncedSearchQuery, (newQuery) => {
     font-size: 1.2rem;
     font-weight: 300;
     color: rgba($color: #000000, $alpha: 0.5);
+
     &:active,
     &:focus {
       outline: none;
