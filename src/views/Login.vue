@@ -80,8 +80,8 @@ interface RegisterForm {
 }
 
 const registerForm = ref<RegisterForm>({
-  email: "mglvnt",
-  password: "Ankara.hacet1&",
+  email: "",
+  password: "",
 });
 
 const register = async () => {
@@ -99,7 +99,7 @@ const register = async () => {
       registerForm.value.email,
       registerForm.value.password
     );
-    snackbarStore.showMessage(res.message || "Giriş başarılı.");
+    snackbarStore.showMessage("Giriş başarılı.");
     router.push("/");
   } catch (error: any) {
     console.log(error);
