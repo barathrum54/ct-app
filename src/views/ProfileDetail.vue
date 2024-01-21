@@ -5,7 +5,7 @@
       <profile-search-bar :user-handle="userHandle" />
     </div>
     <div class="cards-section">
-      <profile-detail-section />
+      <profile-detail-section :profile="{ id: 1, name: 'test' }" />
     </div>
   </v-container>
 </template>

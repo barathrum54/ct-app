@@ -61,7 +61,6 @@ const handleShowProfileButtonClick = (userHandle: string) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 400px !important;
   padding: 0;
 
   .v-card {

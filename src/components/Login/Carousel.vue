@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import ProfileCard from '../ProfileCard/ProfileCard.vue';
+import ProfileCard from '@/components/Profile/ProfileCard/ProfileCard.vue';
 
 const items = ref([
   { title: 'Item 1', subtitle: 'Subtitle 1' },
@@ -47,7 +47,7 @@ setInterval(updateActiveIndex, 5000);
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 375px;
+  height: 420px;
 
   .carousel-card {
     background-color: white;

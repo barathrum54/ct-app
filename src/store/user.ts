@@ -17,12 +17,13 @@ export const useUserStore = defineStore({
   }),
   actions: {
     async loginUser(email: string, password: string) {
+      this.isLoggedIn = true;
       try {
-        // const userData = await authService.login(email, password);
+        const userData = await authService.login(email, password);
         this.isLoggedIn = true;
-        this.userData = { email: email };
-        // this.userData = { email: userData.email };
-        return { email: email };
+        // this.userData = { email: email };
+        this.userData = { email: userData.email };
+        return userData;
       } catch (error: any) {
         if (error.message) throw error.message;
         throw `${error.response.data.message} ${

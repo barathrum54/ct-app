@@ -1,7 +1,7 @@
 <template>
   <div class="card-wrapper">
     <v-card class="w-100 elevation-2">
-      <v-img src="../../assets/image/logo.svg" width="75" />
+      <v-img src="@/assets/image/logo.svg" width="75" />
       <h3 class="mt-4 text-white mt-5">Hesabı Bulduk!</h3>
       <h4 class="mt-4 text-white font-weight-regular mt-5 info-text">
         Hayaletimizi çalıştırmak için ona biraz ruh gerekiyor. Sınırsız avlanma
